@@ -1,0 +1,2561 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>HSE Project</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<section id="imports" class="cell markdown" id="nH9UUvNKBfTn">
+<h1>Imports</h1>
+</section>
+<div class="cell code" data-execution_count="1" id="Wduwu_3yIJAi">
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span></code></pre></div>
+</div>
+<section id="loading-dataset" class="cell markdown" id="CJhpeYCABt5Q">
+<h1>Loading Dataset</h1>
+</section>
+<div class="cell code" data-execution_count="3"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}"
+id="obe3B0nsJyAU" data-outputId="86d7ddf7-f01b-4143-bf9e-e7fcf3d80daf">
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&quot;dataset/Motor_Vehicle_Collisions.csv&quot;</span>)</span></code></pre></div>
+<div class="output stream stderr">
+<pre><code>&lt;ipython-input-3-4e57de93912b&gt;:1: DtypeWarning: Columns (3) have mixed types. Specify dtype option on import or set low_memory=False.
+  df = pd.read_csv(&quot;drive/MyDrive/MidTermPython/Motor_Vehicle_Collisions.csv&quot;)
+</code></pre>
+</div>
+</div>
+<section id="dataset-preparation" class="cell markdown"
+id="-91R7AguBWu9">
+<h1>Dataset Preparation</h1>
+</section>
+<div class="cell markdown" id="HZHRuZ3YD4VL">
+<p><strong>Renaming columns</strong></p>
+</div>
+<div class="cell code" data-execution_count="4" id="2Z06fvfSOq9v">
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.columns <span class="op">=</span> df.columns.<span class="bu">str</span>.replace(<span class="st">&#39; &#39;</span>, <span class="st">&#39;_&#39;</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df.columns <span class="op">=</span> df.columns.<span class="bu">str</span>.lower()</span></code></pre></div>
+</div>
+<div class="cell code" data-execution_count="5"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:612}"
+id="IMli5BbWKxZd" data-outputId="4955482e-0254-4f7f-db73-8ebebbea14d1">
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">10</span>)</span></code></pre></div>
+<div class="output execute_result" data-execution_count="5">
+
+  <div id="df-282dadb0-593e-4142-bcc3-b7f9585b0724" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>crash_date</th>
+      <th>crash_time</th>
+      <th>borough</th>
+      <th>zip_code</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>location</th>
+      <th>on_street_name</th>
+      <th>cross_street_name</th>
+      <th>off_street_name</th>
+      <th>...</th>
+      <th>contributing_factor_vehicle_2</th>
+      <th>contributing_factor_vehicle_3</th>
+      <th>contributing_factor_vehicle_4</th>
+      <th>contributing_factor_vehicle_5</th>
+      <th>collision_id</th>
+      <th>vehicle_type_code_1</th>
+      <th>vehicle_type_code_2</th>
+      <th>vehicle_type_code_3</th>
+      <th>vehicle_type_code_4</th>
+      <th>vehicle_type_code_5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>09/11/2021</td>
+      <td>2:39</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>WHITESTONE EXPRESSWAY</td>
+      <td>20 AVENUE</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>Unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4455765</td>
+      <td>Sedan</td>
+      <td>Sedan</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>03/26/2022</td>
+      <td>11:45</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>QUEENSBORO BRIDGE UPPER</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4513547</td>
+      <td>Sedan</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>06/29/2022</td>
+      <td>6:55</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>THROGS NECK BRIDGE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>Unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4541903</td>
+      <td>Sedan</td>
+      <td>Pick-up Truck</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>09/11/2021</td>
+      <td>9:35</td>
+      <td>BROOKLYN</td>
+      <td>11208.0</td>
+      <td>40.667202</td>
+      <td>-73.866500</td>
+      <td>(40.667202, -73.8665)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1211      LORING AVENUE</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4456314</td>
+      <td>Sedan</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>12/14/2021</td>
+      <td>8:13</td>
+      <td>BROOKLYN</td>
+      <td>11233.0</td>
+      <td>40.683304</td>
+      <td>-73.917274</td>
+      <td>(40.683304, -73.917274)</td>
+      <td>SARATOGA AVENUE</td>
+      <td>DECATUR STREET</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4486609</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>04/14/2021</td>
+      <td>12:47</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>MAJOR DEEGAN EXPRESSWAY RAMP</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>Unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4407458</td>
+      <td>Dump</td>
+      <td>Sedan</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>12/14/2021</td>
+      <td>17:05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>40.709183</td>
+      <td>-73.956825</td>
+      <td>(40.709183, -73.956825)</td>
+      <td>BROOKLYN QUEENS EXPRESSWAY</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>Unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4486555</td>
+      <td>Sedan</td>
+      <td>Tractor Truck Diesel</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>12/14/2021</td>
+      <td>8:17</td>
+      <td>BRONX</td>
+      <td>10475.0</td>
+      <td>40.868160</td>
+      <td>-73.831480</td>
+      <td>(40.86816, -73.83148)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>344       BAYCHESTER AVENUE</td>
+      <td>...</td>
+      <td>Unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4486660</td>
+      <td>Sedan</td>
+      <td>Sedan</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>12/14/2021</td>
+      <td>21:10</td>
+      <td>BROOKLYN</td>
+      <td>11207.0</td>
+      <td>40.671720</td>
+      <td>-73.897100</td>
+      <td>(40.67172, -73.8971)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2047      PITKIN AVENUE</td>
+      <td>...</td>
+      <td>Unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4487074</td>
+      <td>Sedan</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>12/14/2021</td>
+      <td>14:58</td>
+      <td>MANHATTAN</td>
+      <td>10017.0</td>
+      <td>40.751440</td>
+      <td>-73.973970</td>
+      <td>(40.75144, -73.97397)</td>
+      <td>3 AVENUE</td>
+      <td>EAST 43 STREET</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>Unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4486519</td>
+      <td>Sedan</td>
+      <td>Station Wagon/Sport Utility Vehicle</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>10 rows × 29 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-282dadb0-593e-4142-bcc3-b7f9585b0724')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-282dadb0-593e-4142-bcc3-b7f9585b0724 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-282dadb0-593e-4142-bcc3-b7f9585b0724');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-b7ad9f94-4919-4b8f-9196-54f62cbb5a2f">
+  <button class="colab-df-quickchart" onclick="quickchart('df-b7ad9f94-4919-4b8f-9196-54f62cbb5a2f')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-b7ad9f94-4919-4b8f-9196-54f62cbb5a2f button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+
+</div>
+</div>
+<div class="cell markdown" id="23K28US5D-1a">
+<p><strong>Some useful information</strong></p>
+</div>
+<div class="cell code" data-execution_count="6"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}"
+id="LGCkLAkSRyKs" data-outputId="cf80729e-de42-43d6-e456-85becb7063d1">
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Shape of the DataFrame (rows/columns):&#39;</span>, df.shape)</span></code></pre></div>
+<div class="output stream stdout">
+<pre><code>Shape of the DataFrame (rows/columns): (2034019, 29)
+</code></pre>
+</div>
+</div>
+<div class="cell code" data-execution_count="7"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}"
+id="AFxvHw-31vy6" data-outputId="53bb8805-a213-4309-fc92-ce727c5bb7be">
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code></pre></div>
+<div class="output stream stdout">
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 2034019 entries, 0 to 2034018
+Data columns (total 29 columns):
+ #   Column                         Dtype  
+---  ------                         -----  
+ 0   crash_date                     object 
+ 1   crash_time                     object 
+ 2   borough                        object 
+ 3   zip_code                       object 
+ 4   latitude                       float64
+ 5   longitude                      float64
+ 6   location                       object 
+ 7   on_street_name                 object 
+ 8   cross_street_name              object 
+ 9   off_street_name                object 
+ 10  number_of_persons_injured      float64
+ 11  number_of_persons_killed       float64
+ 12  number_of_pedestrians_injured  int64  
+ 13  number_of_pedestrians_killed   int64  
+ 14  number_of_cyclist_injured      int64  
+ 15  number_of_cyclist_killed       int64  
+ 16  number_of_motorist_injured     int64  
+ 17  number_of_motorist_killed      int64  
+ 18  contributing_factor_vehicle_1  object 
+ 19  contributing_factor_vehicle_2  object 
+ 20  contributing_factor_vehicle_3  object 
+ 21  contributing_factor_vehicle_4  object 
+ 22  contributing_factor_vehicle_5  object 
+ 23  collision_id                   int64  
+ 24  vehicle_type_code_1            object 
+ 25  vehicle_type_code_2            object 
+ 26  vehicle_type_code_3            object 
+ 27  vehicle_type_code_4            object 
+ 28  vehicle_type_code_5            object 
+dtypes: float64(4), int64(7), object(18)
+memory usage: 450.0+ MB
+</code></pre>
+</div>
+</div>
+<div class="cell code" data-execution_count="8"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}"
+id="FFu68nfW103K" data-outputId="b8976ed8-1c60-47ee-bed7-3d0bed4ecdb0">
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df.isna().<span class="bu">sum</span>()</span></code></pre></div>
+<div class="output execute_result" data-execution_count="8">
+<pre><code>crash_date                             0
+crash_time                             0
+borough                           632787
+zip_code                          633028
+latitude                          230884
+longitude                         230884
+location                          230884
+on_street_name                    429166
+cross_street_name                 763510
+off_street_name                  1697226
+number_of_persons_injured             18
+number_of_persons_killed              31
+number_of_pedestrians_injured          0
+number_of_pedestrians_killed           0
+number_of_cyclist_injured              0
+number_of_cyclist_killed               0
+number_of_motorist_injured             0
+number_of_motorist_killed              0
+contributing_factor_vehicle_1       6442
+contributing_factor_vehicle_2     311455
+contributing_factor_vehicle_3    1889497
+contributing_factor_vehicle_4    2001552
+contributing_factor_vehicle_5    2025235
+collision_id                           0
+vehicle_type_code_1                12917
+vehicle_type_code_2               382101
+vehicle_type_code_3              1894593
+vehicle_type_code_4              2002641
+vehicle_type_code_5              2025502
+dtype: int64</code></pre>
+</div>
+</div>
+<div class="cell code" data-execution_count="9"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}"
+id="rPy1JTN62DvN" data-outputId="78b37a59-7026-45bb-80ab-9547a8ea2beb">
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(df.isna().<span class="bu">sum</span>() <span class="op">/</span> <span class="bu">len</span>(df) <span class="op">*</span> <span class="dv">100</span>).<span class="bu">round</span>(<span class="dv">2</span>).sort_values(ascending <span class="op">=</span> <span class="va">False</span>)</span></code></pre></div>
+<div class="output execute_result" data-execution_count="9">
+<pre><code>vehicle_type_code_5              99.58
+contributing_factor_vehicle_5    99.57
+vehicle_type_code_4              98.46
+contributing_factor_vehicle_4    98.40
+vehicle_type_code_3              93.15
+contributing_factor_vehicle_3    92.89
+off_street_name                  83.44
+cross_street_name                37.54
+zip_code                         31.12
+borough                          31.11
+on_street_name                   21.10
+vehicle_type_code_2              18.79
+contributing_factor_vehicle_2    15.31
+location                         11.35
+longitude                        11.35
+latitude                         11.35
+vehicle_type_code_1               0.64
+contributing_factor_vehicle_1     0.32
+collision_id                      0.00
+crash_date                        0.00
+number_of_motorist_killed         0.00
+number_of_motorist_injured        0.00
+number_of_cyclist_killed          0.00
+crash_time                        0.00
+number_of_pedestrians_killed      0.00
+number_of_pedestrians_injured     0.00
+number_of_persons_killed          0.00
+number_of_persons_injured         0.00
+number_of_cyclist_injured         0.00
+dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell markdown" id="MWWU-ZWvC0hF">
+<p><strong>Removing NaN values</strong></p>
+</div>
+<div class="cell code" data-execution_count="10" id="Sq22Z9JQ2RSa">
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(columns <span class="op">=</span> [</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;vehicle_type_code_5&#39;</span>,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;contributing_factor_vehicle_5&#39;</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;vehicle_type_code_4&#39;</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;contributing_factor_vehicle_4&#39;</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;vehicle_type_code_3&#39;</span>,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;contributing_factor_vehicle_3&#39;</span>,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;off_street_name&#39;</span>,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;zip_code&#39;</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    ])</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>df.drop(<span class="st">&#39;location&#39;</span>, axis <span class="op">=</span> <span class="dv">1</span>, inplace <span class="op">=</span> <span class="va">True</span>)</span></code></pre></div>
+</div>
+<div class="cell code" data-execution_count="11"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}"
+id="jt0oZerg21rp" data-outputId="602b3eaf-148e-4c4c-9076-21e93036c4b2">
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(df.isna().<span class="bu">sum</span>() <span class="op">/</span> <span class="bu">len</span>(df) <span class="op">*</span> <span class="dv">100</span>).<span class="bu">round</span>(<span class="dv">2</span>).sort_values(ascending <span class="op">=</span> <span class="va">False</span>)</span></code></pre></div>
+<div class="output execute_result" data-execution_count="11">
+<pre><code>cross_street_name                37.54
+borough                          31.11
+on_street_name                   21.10
+vehicle_type_code_2              18.79
+contributing_factor_vehicle_2    15.31
+latitude                         11.35
+longitude                        11.35
+vehicle_type_code_1               0.64
+contributing_factor_vehicle_1     0.32
+number_of_motorist_injured        0.00
+collision_id                      0.00
+number_of_motorist_killed         0.00
+crash_date                        0.00
+number_of_cyclist_killed          0.00
+number_of_cyclist_injured         0.00
+crash_time                        0.00
+number_of_pedestrians_injured     0.00
+number_of_persons_killed          0.00
+number_of_persons_injured         0.00
+number_of_pedestrians_killed      0.00
+dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell code" data-execution_count="12"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}"
+id="e3bJBXmE28vp" data-outputId="55798dc5-a8e3-4412-f6a8-8cf763678f05">
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Before cleaning:&#39;</span>, df.shape)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.dropna()</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;After cleaning:&#39;</span>, df.shape)</span></code></pre></div>
+<div class="output stream stdout">
+<pre><code>Before cleaning: (2034019, 20)
+After cleaning: (880392, 20)
+</code></pre>
+</div>
+</div>
+<div class="cell markdown" id="6Ncrtt7jC-Ax">
+<p><strong>Transforming objects to DateTime</strong></p>
+</div>
+<div class="cell code" data-execution_count="13" id="bWgcFmUZ3Z1O">
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># datetime for [&#39;crash_date&#39;]</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;crash_date&#39;</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">&#39;crash_date&#39;</span>])</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">#  df.time for [&#39;crash_time&#39;]</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;crash_time&#39;</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">&#39;crash_time&#39;</span>], <span class="bu">format</span><span class="op">=</span><span class="st">&#39;%H:%M&#39;</span>).dt.time</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># making &#39;crash_hour&#39;</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;crash_hour&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;crash_time&#39;</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.strftime(<span class="st">&#39;%H&#39;</span>)).astype(<span class="bu">int</span>)</span></code></pre></div>
+</div>
+<div class="cell code" data-execution_count="14" id="RiHLUDmYINqx">
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;day&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;crash_date&#39;</span>].dt.day</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;month&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;crash_date&#39;</span>].dt.month</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;year&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;crash_date&#39;</span>].dt.year</span></code></pre></div>
+</div>
+<div class="cell code" data-execution_count="15" id="v6GqdcCgJTpw">
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;consequences_of_an_accident&#39;</span>] <span class="op">=</span> df[[</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;number_of_persons_injured&#39;</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;number_of_persons_killed&#39;</span>,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;number_of_pedestrians_injured&#39;</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;number_of_pedestrians_killed&#39;</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;number_of_cyclist_injured&#39;</span>,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;number_of_cyclist_killed&#39;</span>,</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;number_of_motorist_injured&#39;</span>,</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;number_of_motorist_killed&#39;</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    ]].<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
+</div>
+<div class="cell markdown" id="Dg7BGnSbDGZ-">
+<p><strong>Showing prepared dataset</strong></p>
+</div>
+<div class="cell code" data-execution_count="16"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:916}"
+id="Tdgaokxn3DWR" data-outputId="59028eb5-0b77-4bee-bffe-fa78858c5603">
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>display(df.head())</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.info())</span></code></pre></div>
+<div class="output display_data">
+
+  <div id="df-993a5ebf-24b1-4b7a-be64-36eb866f122b" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>crash_date</th>
+      <th>crash_time</th>
+      <th>borough</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>on_street_name</th>
+      <th>cross_street_name</th>
+      <th>number_of_persons_injured</th>
+      <th>number_of_persons_killed</th>
+      <th>number_of_pedestrians_injured</th>
+      <th>...</th>
+      <th>contributing_factor_vehicle_1</th>
+      <th>contributing_factor_vehicle_2</th>
+      <th>collision_id</th>
+      <th>vehicle_type_code_1</th>
+      <th>vehicle_type_code_2</th>
+      <th>crash_hour</th>
+      <th>day</th>
+      <th>month</th>
+      <th>year</th>
+      <th>consequences_of_an_accident</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>9</th>
+      <td>2021-12-14</td>
+      <td>14:58:00</td>
+      <td>MANHATTAN</td>
+      <td>40.751440</td>
+      <td>-73.973970</td>
+      <td>3 AVENUE</td>
+      <td>EAST 43 STREET</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>Passing Too Closely</td>
+      <td>Unspecified</td>
+      <td>4486519</td>
+      <td>Sedan</td>
+      <td>Station Wagon/Sport Utility Vehicle</td>
+      <td>14</td>
+      <td>14</td>
+      <td>12</td>
+      <td>2021</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2021-12-14</td>
+      <td>16:50:00</td>
+      <td>QUEENS</td>
+      <td>40.675884</td>
+      <td>-73.755770</td>
+      <td>SPRINGFIELD BOULEVARD</td>
+      <td>EAST GATE PLAZA</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>Turning Improperly</td>
+      <td>Unspecified</td>
+      <td>4487127</td>
+      <td>Sedan</td>
+      <td>Station Wagon/Sport Utility Vehicle</td>
+      <td>16</td>
+      <td>14</td>
+      <td>12</td>
+      <td>2021</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>2021-12-14</td>
+      <td>23:10:00</td>
+      <td>QUEENS</td>
+      <td>40.666840</td>
+      <td>-73.789410</td>
+      <td>NORTH CONDUIT AVENUE</td>
+      <td>150 STREET</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>Reaction to Uninvolved Vehicle</td>
+      <td>Unspecified</td>
+      <td>4486635</td>
+      <td>Sedan</td>
+      <td>Sedan</td>
+      <td>23</td>
+      <td>14</td>
+      <td>12</td>
+      <td>2021</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>2021-12-11</td>
+      <td>19:43:00</td>
+      <td>BRONX</td>
+      <td>40.872620</td>
+      <td>-73.904686</td>
+      <td>WEST KINGSBRIDGE ROAD</td>
+      <td>HEATH AVENUE</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>Unspecified</td>
+      <td>Unspecified</td>
+      <td>4487040</td>
+      <td>Station Wagon/Sport Utility Vehicle</td>
+      <td>Sedan</td>
+      <td>19</td>
+      <td>11</td>
+      <td>12</td>
+      <td>2021</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>2021-12-13</td>
+      <td>17:40:00</td>
+      <td>STATEN ISLAND</td>
+      <td>40.631650</td>
+      <td>-74.087620</td>
+      <td>VICTORY BOULEVARD</td>
+      <td>WOODSTOCK AVENUE</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>Unspecified</td>
+      <td>Unspecified</td>
+      <td>4487001</td>
+      <td>Sedan</td>
+      <td>Sedan</td>
+      <td>17</td>
+      <td>13</td>
+      <td>12</td>
+      <td>2021</td>
+      <td>2.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 25 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-993a5ebf-24b1-4b7a-be64-36eb866f122b')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-993a5ebf-24b1-4b7a-be64-36eb866f122b button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-993a5ebf-24b1-4b7a-be64-36eb866f122b');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-b39cfade-e6d4-4f95-83ee-04015a9c7146">
+  <button class="colab-df-quickchart" onclick="quickchart('df-b39cfade-e6d4-4f95-83ee-04015a9c7146')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-b39cfade-e6d4-4f95-83ee-04015a9c7146 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+
+</div>
+<div class="output stream stdout">
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Int64Index: 880392 entries, 9 to 2034017
+Data columns (total 25 columns):
+ #   Column                         Non-Null Count   Dtype         
+---  ------                         --------------   -----         
+ 0   crash_date                     880392 non-null  datetime64[ns]
+ 1   crash_time                     880392 non-null  object        
+ 2   borough                        880392 non-null  object        
+ 3   latitude                       880392 non-null  float64       
+ 4   longitude                      880392 non-null  float64       
+ 5   on_street_name                 880392 non-null  object        
+ 6   cross_street_name              880392 non-null  object        
+ 7   number_of_persons_injured      880392 non-null  float64       
+ 8   number_of_persons_killed       880392 non-null  float64       
+ 9   number_of_pedestrians_injured  880392 non-null  int64         
+ 10  number_of_pedestrians_killed   880392 non-null  int64         
+ 11  number_of_cyclist_injured      880392 non-null  int64         
+ 12  number_of_cyclist_killed       880392 non-null  int64         
+ 13  number_of_motorist_injured     880392 non-null  int64         
+ 14  number_of_motorist_killed      880392 non-null  int64         
+ 15  contributing_factor_vehicle_1  880392 non-null  object        
+ 16  contributing_factor_vehicle_2  880392 non-null  object        
+ 17  collision_id                   880392 non-null  int64         
+ 18  vehicle_type_code_1            880392 non-null  object        
+ 19  vehicle_type_code_2            880392 non-null  object        
+ 20  crash_hour                     880392 non-null  int64         
+ 21  day                            880392 non-null  int64         
+ 22  month                          880392 non-null  int64         
+ 23  year                           880392 non-null  int64         
+ 24  consequences_of_an_accident    880392 non-null  float64       
+dtypes: datetime64[ns](1), float64(5), int64(11), object(8)
+memory usage: 174.6+ MB
+None
+</code></pre>
+</div>
+</div>
+<section id="descriptive-stats" class="cell markdown" id="PY_dhAOBEnCB">
+<h1>Descriptive stats</h1>
+</section>
+<div class="cell code" data-execution_count="17"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}"
+id="TLtkAwNfEmUN" data-outputId="ec9051b7-69f3-4253-e78c-14a749559891">
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Number of motorists injured:&quot;</span>,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f&quot;  Mean: </span><span class="sc">{</span>df[<span class="st">&#39;number_of_motorist_injured&#39;</span>]<span class="sc">.</span>mean()<span class="sc">}</span><span class="ss">&quot;</span>,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f&quot;  Median: </span><span class="sc">{</span>(df[<span class="st">&#39;number_of_motorist_injured&#39;</span>].<span class="bu">max</span>() <span class="op">+</span> df[<span class="st">&#39;number_of_motorist_injured&#39;</span>].<span class="bu">min</span>()) <span class="op">/</span> <span class="dv">2</span><span class="sc">}</span><span class="ss">&quot;</span>,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f&quot;  Standart deviation: </span><span class="sc">{</span>df[<span class="st">&#39;number_of_motorist_injured&#39;</span>]<span class="sc">.</span>std()<span class="sc">}</span><span class="ss">&quot;</span>,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    sep<span class="op">=</span><span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>, end<span class="op">=</span><span class="st">&#39;</span><span class="ch">\n\n</span><span class="st">&#39;</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Number of pedestrians injured:&quot;</span>,</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f&quot;  Mean: </span><span class="sc">{</span>df[<span class="st">&#39;number_of_pedestrians_injured&#39;</span>]<span class="sc">.</span>mean()<span class="sc">}</span><span class="ss">&quot;</span>,</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f&quot;  Median: </span><span class="sc">{</span>(df[<span class="st">&#39;number_of_pedestrians_injured&#39;</span>].<span class="bu">max</span>() <span class="op">+</span> df[<span class="st">&#39;number_of_pedestrians_injured&#39;</span>].<span class="bu">min</span>()) <span class="op">/</span> <span class="dv">2</span><span class="sc">}</span><span class="ss">&quot;</span>,</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f&quot;  Standart deviation: </span><span class="sc">{</span>df[<span class="st">&#39;number_of_pedestrians_injured&#39;</span>]<span class="sc">.</span>std()<span class="sc">}</span><span class="ss">&quot;</span>,</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    sep<span class="op">=</span><span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>, end<span class="op">=</span><span class="st">&#39;</span><span class="ch">\n\n</span><span class="st">&#39;</span>)</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Number of cyclists injured:&quot;</span>,</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f&quot;  Mean: </span><span class="sc">{</span>df[<span class="st">&#39;number_of_cyclist_injured&#39;</span>]<span class="sc">.</span>mean()<span class="sc">}</span><span class="ss">&quot;</span>,</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f&quot;  Median: </span><span class="sc">{</span>(df[<span class="st">&#39;number_of_cyclist_injured&#39;</span>].<span class="bu">max</span>() <span class="op">+</span> df[<span class="st">&#39;number_of_cyclist_injured&#39;</span>].<span class="bu">min</span>()) <span class="op">/</span> <span class="dv">2</span><span class="sc">}</span><span class="ss">&quot;</span>,</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f&quot;  Standart deviation: </span><span class="sc">{</span>df[<span class="st">&#39;number_of_cyclist_injured&#39;</span>]<span class="sc">.</span>std()<span class="sc">}</span><span class="ss">&quot;</span>,</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>    sep<span class="op">=</span><span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>)</span></code></pre></div>
+<div class="output stream stdout">
+<pre><code>Number of motorists injured:
+  Mean: 0.2352111332224736
+  Median: 21.5
+  Standart deviation: 0.6903676519073746
+
+Number of pedestrians injured:
+  Mean: 0.0029668602168125106
+  Median: 7.5
+  Standart deviation: 0.06812785250106211
+
+Number of cyclists injured:
+  Mean: 0.03439831347854138
+  Median: 2.0
+  Standart deviation: 0.1842028728786876
+</code></pre>
+</div>
+</div>
+<section id="analytics" class="cell markdown" id="7V59ND6VB2gn">
+<h1>Analytics</h1>
+</section>
+<div class="cell markdown" id="z3IDyB0_DTCm">
+<p><strong>Number of traffic accidents depending on the city
+district</strong></p>
+</div>
+<div class="cell code" data-execution_count="18"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:807}"
+id="NehCS1QF6o-e" data-outputId="f7805c8a-ca4e-4769-8a09-1375913a706f">
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>borough_accidents <span class="op">=</span> df.borough.value_counts()</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">8</span>))</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span>borough_accidents, y<span class="op">=</span>borough_accidents.index, palette<span class="op">=</span><span class="st">&#39;plasma&#39;</span>)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&#39;Number of traffic accidents depending on the city district&#39;</span>, fontweight <span class="op">=</span> <span class="st">&#39;bold&#39;</span>)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, alpha <span class="op">=</span> <span class="fl">0.3</span>, color <span class="op">=</span> <span class="st">&#39;grey&#39;</span>, axis <span class="op">=</span> <span class="st">&#39;x&#39;</span>)</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&quot;Borough&quot;</span>, fontweight <span class="op">=</span> <span class="st">&#39;bold&#39;</span>)</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="output display_data">
+<p><img
+src="/static/img/notebook/number_of_trafic_accidents_on_the_city_district.png" /></p>
+</div>
+</div>
+<div class="cell markdown" id="BgkYMwF7DbF4">
+<p><strong>Road accidents by time</strong></p>
+</div>
+<div class="cell code" data-execution_count="19"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:807}"
+id="_jVfrM1u72LP" data-outputId="e18e7edd-e1cd-482d-8d20-4824e8452b52">
+<div class="sourceCode" id="cb27"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">8</span>))</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>sns.lineplot(df[<span class="st">&#39;crash_date&#39;</span>].value_counts())</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&#39;Road accidents by time&#39;</span>, fontweight <span class="op">=</span> <span class="st">&#39;bold&#39;</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&quot;Year&quot;</span>, fontweight <span class="op">=</span> <span class="st">&#39;bold&#39;</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&quot;Count&quot;</span>, fontweight <span class="op">=</span> <span class="st">&#39;bold&#39;</span>)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="output display_data">
+<p><img
+src="/static/img/notebook/road_accident_by_time.png" /></p>
+</div>
+</div>
+<div class="cell markdown" id="7COCOLQ7DhLm">
+<p><strong>Road accidents by day of the week</strong></p>
+</div>
+<div class="cell code" data-execution_count="20"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:807}"
+id="axlDfxti8b3I" data-outputId="2e42e736-bfd2-4b10-85ba-4f0ab3c5fa52">
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the day of the week and reorder it starting from Monday</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>days <span class="op">=</span> df[<span class="st">&#39;crash_date&#39;</span>].dt.day_name().value_counts()</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>days <span class="op">=</span> days.reindex([<span class="st">&#39;Monday&#39;</span>, <span class="st">&#39;Tuesday&#39;</span>, <span class="st">&#39;Wednesday&#39;</span>, <span class="st">&#39;Thursday&#39;</span>, <span class="st">&#39;Friday&#39;</span>, <span class="st">&#39;Saturday&#39;</span>, <span class="st">&#39;Sunday&#39;</span>])</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>sns.barplot(y<span class="op">=</span>days, x<span class="op">=</span>days.index, palette<span class="op">=</span><span class="st">&#39;viridis&#39;</span>)</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&#39;Road accidents by day of the week&#39;</span>, fontweight<span class="op">=</span><span class="st">&#39;bold&#39;</span>)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Day&#39;</span>, fontweight <span class="op">=</span> <span class="st">&#39;bold&#39;</span>)</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Count&#39;</span>, fontweight <span class="op">=</span> <span class="st">&#39;bold&#39;</span>)</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>, color <span class="op">=</span> <span class="st">&#39;grey&#39;</span>, axis <span class="op">=</span> <span class="st">&#39;y&#39;</span>)</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="output display_data">
+<p><img
+src="/static/img/notebook/road_accident_by_day_of_the_week.png" /></p>
+</div>
+</div>
+<div class="cell markdown" id="PtJIJWxPDmZP">
+<p><strong>Car Accidents by Hour</strong></p>
+</div>
+<div class="cell code" data-execution_count="21"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:807}"
+id="MXCOGveg9Dc1" data-outputId="18ca5509-4cdc-4bf7-b3e8-53adf7bf116a">
+<div class="sourceCode" id="cb29"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>all_hours <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">24</span>))</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the accidents by hour</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>hour_counts <span class="op">=</span> df[<span class="st">&#39;crash_hour&#39;</span>].value_counts().reindex(all_hours)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the line plot</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span>hour_counts.index, y<span class="op">=</span>hour_counts)</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&#39;Car Accidents by Hour&#39;</span>, fontweight<span class="op">=</span><span class="st">&#39;bold&#39;</span>)</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Count&#39;</span>, fontweight<span class="op">=</span><span class="st">&#39;bold&#39;</span>)</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Hour&#39;</span>, fontweight<span class="op">=</span><span class="st">&#39;bold&#39;</span>)</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>, color<span class="op">=</span><span class="st">&#39;grey&#39;</span>)</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>plt.xticks(all_hours)</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="output display_data">
+<p><img
+src="/static/img/notebook/car_accidents_by_hour.png" /></p>
+</div>
+</div>
+<div class="cell markdown" id="3GSjBuuEDqvJ">
+<p><strong>Road accidents by month</strong></p>
+</div>
+<div class="cell code" data-execution_count="22"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:807}"
+id="6V5fOSi39TuZ" data-outputId="61280f33-cb29-4dad-d4b0-3f63cb2aba1b">
+<div class="sourceCode" id="cb30"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the month and reorder it starting from Monday</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>months <span class="op">=</span> df[<span class="st">&#39;crash_date&#39;</span>].dt.month_name().value_counts()</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>months <span class="op">=</span> months.reindex([<span class="st">&#39;January&#39;</span>, <span class="st">&#39;February&#39;</span>, <span class="st">&#39;March&#39;</span>, <span class="st">&#39;April&#39;</span>, <span class="st">&#39;May&#39;</span>, <span class="st">&#39;June&#39;</span>, <span class="st">&#39;July&#39;</span>, <span class="st">&#39;August&#39;</span>, <span class="st">&#39;September&#39;</span>, <span class="st">&#39;October&#39;</span>, <span class="st">&#39;November&#39;</span>, <span class="st">&#39;December&#39;</span>])</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>sns.barplot(y<span class="op">=</span>months, x<span class="op">=</span>months.index, palette <span class="op">=</span> <span class="st">&#39;viridis&#39;</span>)</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&#39;Road accidents by month&#39;</span>, fontweight<span class="op">=</span><span class="st">&#39;bold&#39;</span>)</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Month&#39;</span>, fontweight <span class="op">=</span> <span class="st">&#39;bold&#39;</span>)</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Count&#39;</span>, fontweight <span class="op">=</span> <span class="st">&#39;bold&#39;</span>)</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>, color <span class="op">=</span> <span class="st">&#39;grey&#39;</span>, axis <span class="op">=</span> <span class="st">&#39;y&#39;</span>)</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="output display_data">
+<p><img
+src="/static/img/notebook/road_accident_by_month.png" /></p>
+</div>
+</div>
+<div class="cell markdown" id="nwex9lgPDvEx">
+<p><strong>Distribution of consequences in accidents</strong></p>
+</div>
+<div class="cell code" data-execution_count="23"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:811}"
+id="l7e7avzm9jI7" data-outputId="2452dfb8-01b0-4bd8-dfe8-12e582b4a8e8">
+<div class="sourceCode" id="cb31"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>consequences <span class="op">=</span> df[[<span class="st">&#39;number_of_persons_injured&#39;</span>, <span class="st">&#39;number_of_persons_killed&#39;</span>,</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&#39;number_of_pedestrians_injured&#39;</span>, <span class="st">&#39;number_of_pedestrians_killed&#39;</span>,</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&#39;number_of_cyclist_injured&#39;</span>, <span class="st">&#39;number_of_cyclist_killed&#39;</span>,</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&#39;number_of_motorist_injured&#39;</span>, <span class="st">&#39;number_of_motorist_killed&#39;</span>]].<span class="bu">sum</span>()</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [col.split(<span class="st">&#39; &#39;</span>)[<span class="op">-</span><span class="dv">2</span>:] <span class="cf">for</span> col <span class="kw">in</span> consequences.index]</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="st">&#39; &#39;</span>.join(words).lower() <span class="cf">for</span> words <span class="kw">in</span> labels]</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>plt.pie(consequences, labels<span class="op">=</span>labels, autopct<span class="op">=</span><span class="st">&#39;</span><span class="sc">%1.1f%%</span><span class="st">&#39;</span>, startangle<span class="op">=</span><span class="dv">140</span>)</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">&#39;equal&#39;</span>)</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&#39;Distribution of consequences in accidents&#39;</span>, fontweight <span class="op">=</span> <span class="st">&#39;bold&#39;</span>)</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>total_sum <span class="op">=</span> consequences.<span class="bu">sum</span>()</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="dv">0</span>, <span class="op">-</span><span class="fl">1.2</span>, <span class="ss">f&#39;Total: </span><span class="sc">{</span>total_sum<span class="sc">}</span><span class="ss">&#39;</span>, fontsize<span class="op">=</span><span class="dv">12</span>, ha<span class="op">=</span><span class="st">&#39;center&#39;</span>)</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="output display_data">
+<p><img
+src="/static/img/notebook/distribution_of_consequences.png" /></p>
+</div>
+</div>
+<section id="showing-correlation" class="cell markdown"
+id="VaPXUIXgB_dw">
+<h1>Showing correlation</h1>
+</section>
+<div class="cell code" data-execution_count="24"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:355}"
+id="E6_0TZ8M-QII" data-outputId="4a8db1ea-61da-468f-dbbb-a3da6e3c059c">
+<div class="sourceCode" id="cb32"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div>
+<div class="output execute_result" data-execution_count="24">
+
+  <div id="df-399d8be2-06d7-4e9c-a723-032a0af28cb8" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>crash_date</th>
+      <th>crash_time</th>
+      <th>borough</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>on_street_name</th>
+      <th>cross_street_name</th>
+      <th>number_of_persons_injured</th>
+      <th>number_of_persons_killed</th>
+      <th>number_of_pedestrians_injured</th>
+      <th>...</th>
+      <th>contributing_factor_vehicle_1</th>
+      <th>contributing_factor_vehicle_2</th>
+      <th>collision_id</th>
+      <th>vehicle_type_code_1</th>
+      <th>vehicle_type_code_2</th>
+      <th>crash_hour</th>
+      <th>day</th>
+      <th>month</th>
+      <th>year</th>
+      <th>consequences_of_an_accident</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>9</th>
+      <td>2021-12-14</td>
+      <td>14:58:00</td>
+      <td>MANHATTAN</td>
+      <td>40.751440</td>
+      <td>-73.973970</td>
+      <td>3 AVENUE</td>
+      <td>EAST 43 STREET</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>Passing Too Closely</td>
+      <td>Unspecified</td>
+      <td>4486519</td>
+      <td>Sedan</td>
+      <td>Station Wagon/Sport Utility Vehicle</td>
+      <td>14</td>
+      <td>14</td>
+      <td>12</td>
+      <td>2021</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2021-12-14</td>
+      <td>16:50:00</td>
+      <td>QUEENS</td>
+      <td>40.675884</td>
+      <td>-73.755770</td>
+      <td>SPRINGFIELD BOULEVARD</td>
+      <td>EAST GATE PLAZA</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>Turning Improperly</td>
+      <td>Unspecified</td>
+      <td>4487127</td>
+      <td>Sedan</td>
+      <td>Station Wagon/Sport Utility Vehicle</td>
+      <td>16</td>
+      <td>14</td>
+      <td>12</td>
+      <td>2021</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>2021-12-14</td>
+      <td>23:10:00</td>
+      <td>QUEENS</td>
+      <td>40.666840</td>
+      <td>-73.789410</td>
+      <td>NORTH CONDUIT AVENUE</td>
+      <td>150 STREET</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>Reaction to Uninvolved Vehicle</td>
+      <td>Unspecified</td>
+      <td>4486635</td>
+      <td>Sedan</td>
+      <td>Sedan</td>
+      <td>23</td>
+      <td>14</td>
+      <td>12</td>
+      <td>2021</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>2021-12-11</td>
+      <td>19:43:00</td>
+      <td>BRONX</td>
+      <td>40.872620</td>
+      <td>-73.904686</td>
+      <td>WEST KINGSBRIDGE ROAD</td>
+      <td>HEATH AVENUE</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>Unspecified</td>
+      <td>Unspecified</td>
+      <td>4487040</td>
+      <td>Station Wagon/Sport Utility Vehicle</td>
+      <td>Sedan</td>
+      <td>19</td>
+      <td>11</td>
+      <td>12</td>
+      <td>2021</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>2021-12-13</td>
+      <td>17:40:00</td>
+      <td>STATEN ISLAND</td>
+      <td>40.631650</td>
+      <td>-74.087620</td>
+      <td>VICTORY BOULEVARD</td>
+      <td>WOODSTOCK AVENUE</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>Unspecified</td>
+      <td>Unspecified</td>
+      <td>4487001</td>
+      <td>Sedan</td>
+      <td>Sedan</td>
+      <td>17</td>
+      <td>13</td>
+      <td>12</td>
+      <td>2021</td>
+      <td>2.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 25 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-399d8be2-06d7-4e9c-a723-032a0af28cb8')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-399d8be2-06d7-4e9c-a723-032a0af28cb8 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-399d8be2-06d7-4e9c-a723-032a0af28cb8');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-e99e9806-0a6e-4e14-ab15-3beae118fd6c">
+  <button class="colab-df-quickchart" onclick="quickchart('df-e99e9806-0a6e-4e14-ab15-3beae118fd6c')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-e99e9806-0a6e-4e14-ab15-3beae118fd6c button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+
+</div>
+</div>
+<div class="cell code" data-execution_count="25" id="uWAVfTUJ-Rjb">
+<div class="sourceCode" id="cb33"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df_sub <span class="op">=</span> df.copy()</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># extract day/month/year</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>df_sub[<span class="st">&#39;day&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;crash_date&#39;</span>].dt.day</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>df_sub[<span class="st">&#39;month&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;crash_date&#39;</span>].dt.month</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>df_sub[<span class="st">&#39;year&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;crash_date&#39;</span>].dt.year</span></code></pre></div>
+</div>
+<div class="cell code" data-execution_count="26" id="18aiTgQN_Mdr">
+<div class="sourceCode" id="cb34"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>label_encoder <span class="op">=</span> LabelEncoder()</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>columns_to_encode <span class="op">=</span> [</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;borough&#39;</span>,</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;contributing_factor_vehicle_1&#39;</span>,</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;contributing_factor_vehicle_2&#39;</span>,</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;vehicle_type_code_2&#39;</span>,</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;vehicle_type_code_1&#39;</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> columns_to_encode:</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>    df_sub[col] <span class="op">=</span> label_encoder.fit_transform(df_sub[col])</span></code></pre></div>
+</div>
+<div class="cell code" data-execution_count="27"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}"
+id="qYx8Hbbg_j7X" data-outputId="a285b7d1-abf1-4642-e12e-0b355a32c278">
+<div class="sourceCode" id="cb35"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>df_sub.columns</span></code></pre></div>
+<div class="output execute_result" data-execution_count="27">
+<pre><code>Index([&#39;crash_date&#39;, &#39;crash_time&#39;, &#39;borough&#39;, &#39;latitude&#39;, &#39;longitude&#39;,
+       &#39;on_street_name&#39;, &#39;cross_street_name&#39;, &#39;number_of_persons_injured&#39;,
+       &#39;number_of_persons_killed&#39;, &#39;number_of_pedestrians_injured&#39;,
+       &#39;number_of_pedestrians_killed&#39;, &#39;number_of_cyclist_injured&#39;,
+       &#39;number_of_cyclist_killed&#39;, &#39;number_of_motorist_injured&#39;,
+       &#39;number_of_motorist_killed&#39;, &#39;contributing_factor_vehicle_1&#39;,
+       &#39;contributing_factor_vehicle_2&#39;, &#39;collision_id&#39;, &#39;vehicle_type_code_1&#39;,
+       &#39;vehicle_type_code_2&#39;, &#39;crash_hour&#39;, &#39;day&#39;, &#39;month&#39;, &#39;year&#39;,
+       &#39;consequences_of_an_accident&#39;],
+      dtype=&#39;object&#39;)</code></pre>
+</div>
+</div>
+<div class="cell code" data-execution_count="28" id="KvxlvBzv_3fr">
+<div class="sourceCode" id="cb37"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df_sub[<span class="st">&#39;consequences_of_an_accident&#39;</span>] <span class="op">=</span> df[[</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;number_of_persons_injured&#39;</span>,</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;number_of_persons_killed&#39;</span>,</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;number_of_pedestrians_injured&#39;</span>,</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;number_of_pedestrians_killed&#39;</span>,</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;number_of_cyclist_injured&#39;</span>,</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;number_of_cyclist_killed&#39;</span>,</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;number_of_motorist_injured&#39;</span>,</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;number_of_motorist_killed&#39;</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>    ]].<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
+</div>
+<div class="cell code" data-execution_count="29"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}"
+id="YrYzM-Zp9n2r" data-outputId="16c064a4-4396-447d-a37e-b4a0e92dba46">
+<div class="sourceCode" id="cb38"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code></pre></div>
+<div class="output stream stdout">
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Int64Index: 880392 entries, 9 to 2034017
+Data columns (total 25 columns):
+ #   Column                         Non-Null Count   Dtype         
+---  ------                         --------------   -----         
+ 0   crash_date                     880392 non-null  datetime64[ns]
+ 1   crash_time                     880392 non-null  object        
+ 2   borough                        880392 non-null  object        
+ 3   latitude                       880392 non-null  float64       
+ 4   longitude                      880392 non-null  float64       
+ 5   on_street_name                 880392 non-null  object        
+ 6   cross_street_name              880392 non-null  object        
+ 7   number_of_persons_injured      880392 non-null  float64       
+ 8   number_of_persons_killed       880392 non-null  float64       
+ 9   number_of_pedestrians_injured  880392 non-null  int64         
+ 10  number_of_pedestrians_killed   880392 non-null  int64         
+ 11  number_of_cyclist_injured      880392 non-null  int64         
+ 12  number_of_cyclist_killed       880392 non-null  int64         
+ 13  number_of_motorist_injured     880392 non-null  int64         
+ 14  number_of_motorist_killed      880392 non-null  int64         
+ 15  contributing_factor_vehicle_1  880392 non-null  object        
+ 16  contributing_factor_vehicle_2  880392 non-null  object        
+ 17  collision_id                   880392 non-null  int64         
+ 18  vehicle_type_code_1            880392 non-null  object        
+ 19  vehicle_type_code_2            880392 non-null  object        
+ 20  crash_hour                     880392 non-null  int64         
+ 21  day                            880392 non-null  int64         
+ 22  month                          880392 non-null  int64         
+ 23  year                           880392 non-null  int64         
+ 24  consequences_of_an_accident    880392 non-null  float64       
+dtypes: datetime64[ns](1), float64(5), int64(11), object(8)
+memory usage: 174.6+ MB
+</code></pre>
+</div>
+</div>
+<div class="cell code" data-execution_count="30" id="bIjILhptAeFt">
+<div class="sourceCode" id="cb40"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>df_sub <span class="op">=</span> df_sub.drop(columns <span class="op">=</span> [</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;crash_date&#39;</span>,</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;crash_time&#39;</span>,</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;on_street_name&#39;</span>,</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;cross_street_name&#39;</span>,</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;collision_id&#39;</span>,</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;number_of_persons_injured&#39;</span>,</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;number_of_persons_killed&#39;</span>,</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;number_of_pedestrians_injured&#39;</span>,</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;number_of_pedestrians_killed&#39;</span>,</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;number_of_cyclist_injured&#39;</span>,</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;number_of_cyclist_killed&#39;</span>,</span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;number_of_motorist_injured&#39;</span>,</span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;number_of_motorist_killed&#39;</span></span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>    ])</span></code></pre></div>
+</div>
+<div class="cell code" data-execution_count="31"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:379}"
+id="GpshdCAQA8Yc" data-outputId="ae7d76e0-d2f7-428c-dc7c-d8f58090d579">
+<div class="sourceCode" id="cb41"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df_sub.head(<span class="dv">10</span>)</span></code></pre></div>
+<div class="output execute_result" data-execution_count="31">
+
+  <div id="df-9e5bd092-8738-4bb6-b146-a8e69fae8d8f" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>borough</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>contributing_factor_vehicle_1</th>
+      <th>contributing_factor_vehicle_2</th>
+      <th>vehicle_type_code_1</th>
+      <th>vehicle_type_code_2</th>
+      <th>crash_hour</th>
+      <th>day</th>
+      <th>month</th>
+      <th>year</th>
+      <th>consequences_of_an_accident</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>9</th>
+      <td>2</td>
+      <td>40.751440</td>
+      <td>-73.973970</td>
+      <td>35</td>
+      <td>55</td>
+      <td>444</td>
+      <td>617</td>
+      <td>14</td>
+      <td>14</td>
+      <td>12</td>
+      <td>2021</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>3</td>
+      <td>40.675884</td>
+      <td>-73.755770</td>
+      <td>52</td>
+      <td>55</td>
+      <td>444</td>
+      <td>617</td>
+      <td>16</td>
+      <td>14</td>
+      <td>12</td>
+      <td>2021</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>3</td>
+      <td>40.666840</td>
+      <td>-73.789410</td>
+      <td>43</td>
+      <td>55</td>
+      <td>444</td>
+      <td>603</td>
+      <td>23</td>
+      <td>14</td>
+      <td>12</td>
+      <td>2021</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>0</td>
+      <td>40.872620</td>
+      <td>-73.904686</td>
+      <td>55</td>
+      <td>55</td>
+      <td>455</td>
+      <td>603</td>
+      <td>19</td>
+      <td>11</td>
+      <td>12</td>
+      <td>2021</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>4</td>
+      <td>40.631650</td>
+      <td>-74.087620</td>
+      <td>55</td>
+      <td>55</td>
+      <td>444</td>
+      <td>603</td>
+      <td>17</td>
+      <td>13</td>
+      <td>12</td>
+      <td>2021</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>1</td>
+      <td>40.687534</td>
+      <td>-73.977500</td>
+      <td>55</td>
+      <td>55</td>
+      <td>444</td>
+      <td>74</td>
+      <td>12</td>
+      <td>14</td>
+      <td>12</td>
+      <td>2021</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>1</td>
+      <td>40.710957</td>
+      <td>-73.951126</td>
+      <td>36</td>
+      <td>55</td>
+      <td>70</td>
+      <td>617</td>
+      <td>17</td>
+      <td>14</td>
+      <td>12</td>
+      <td>2021</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>0</td>
+      <td>40.843906</td>
+      <td>-73.924130</td>
+      <td>3</td>
+      <td>55</td>
+      <td>489</td>
+      <td>617</td>
+      <td>21</td>
+      <td>24</td>
+      <td>4</td>
+      <td>2022</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>2</td>
+      <td>40.767242</td>
+      <td>-73.986206</td>
+      <td>58</td>
+      <td>55</td>
+      <td>455</td>
+      <td>74</td>
+      <td>15</td>
+      <td>24</td>
+      <td>4</td>
+      <td>2022</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>1</td>
+      <td>40.624170</td>
+      <td>-73.970480</td>
+      <td>55</td>
+      <td>55</td>
+      <td>444</td>
+      <td>515</td>
+      <td>12</td>
+      <td>22</td>
+      <td>4</td>
+      <td>2022</td>
+      <td>2.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-9e5bd092-8738-4bb6-b146-a8e69fae8d8f')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-9e5bd092-8738-4bb6-b146-a8e69fae8d8f button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-9e5bd092-8738-4bb6-b146-a8e69fae8d8f');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-e52f934d-332d-4bc0-880f-f0cfd06ceb32">
+  <button class="colab-df-quickchart" onclick="quickchart('df-e52f934d-332d-4bc0-880f-f0cfd06ceb32')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-e52f934d-332d-4bc0-880f-f0cfd06ceb32 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+
+</div>
+</div>
+<div class="cell code" data-execution_count="32" id="NOOzBiDYA-Qp">
+<div class="sourceCode" id="cb42"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>overall_correlation <span class="op">=</span> df_sub.corr()</span></code></pre></div>
+</div>
+<div class="cell code" data-execution_count="33"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:894}"
+id="8jSGGwMBBBoi" data-outputId="812515fb-78f3-48ad-c3df-d94d03d11b66">
+<div class="sourceCode" id="cb43"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">8</span>))</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>sns.heatmap(overall_correlation, annot <span class="op">=</span> <span class="va">True</span>, fmt<span class="op">=</span><span class="st">&#39;.3f&#39;</span>, cmap <span class="op">=</span> <span class="st">&#39;crest&#39;</span>)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&#39;Correlation Matrix&#39;</span>, fontweight <span class="op">=</span> <span class="st">&#39;bold&#39;</span>)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="output display_data">
+<p><img
+src="/static/img/notebook/corr_matrix.png" /></p>
+</div>
+</div>
+</body>
+</html>

@@ -8,10 +8,18 @@ app = Flask(
     static_folder="static"
 )
 
+# This is to stop force sorting in response, by default jsonify sorts the response keys alphabetically
+app.config["JSON_SORT_KEYS"] = False
+
 
 @app.route('/')
 def index():
     return render_template('index.html')
+
+
+@app.route('/notebook')
+def notebook():
+    return render_template('notebook.html')
 
 
 @app.route('/streamlit')
