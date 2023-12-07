@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <br>
+    {% for row in rows %}
+        {% if not row == rows[0] %}
+            <p>{{ row }}</p>
+        {% else %}
+            <p><b>{{ row }}</b></p><br>
+        {% endif %}
+    {% endfor %}
+
+    <br>
+
+    <a href="/interactive" style="text-decoration: none"><b>Try again</b></a>
+{% endblock %}

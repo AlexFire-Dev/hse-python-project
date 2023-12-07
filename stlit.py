@@ -34,11 +34,15 @@ def get_date_df(df, date='2020/3/15'):
 df = get_df()
 
 st.title("HSE Project")
-st.write("Dashboard for project")
+st.subheader("Dashboard for project")
 
+st.write("Example of cleared data:")
 st.dataframe(df.head())
 
 d = st.date_input("Which day crashes you want to see", value=None)
 
 if d:
-    st.map(get_date_df(df, date=d.strftime("%Y/%m/%d")))
+    dt = get_date_df(df, date=d.strftime("%Y/%m/%d"))
+
+    st.write(f"Amount of crashes on this day: {dt.shape[0]}")
+    st.map(dt)

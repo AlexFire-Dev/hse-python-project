@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <br>
+    <form method="post" action="/interactive_check">
+        <div class="mb-3">
+            <label for="date_field" class="form-label">Date to show stats:</label>
+            <input name="date" type="text" class="form-control" id="date_field" placeholder="2023/09/01">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Show stats</button>
+    </form>
+{% endblock %}
