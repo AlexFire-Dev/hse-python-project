@@ -36,6 +36,8 @@ df = get_df()
 st.title("HSE Project")
 st.write("Dashboard for project")
 
+st.dataframe(df.head())
+
 d = st.date_input("Which day crashes you want to see", value=None)
 
 if d:

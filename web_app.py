@@ -1,5 +1,4 @@
 from flask import Flask, render_template
-import streamlit as st
 
 
 app = Flask(
@@ -24,9 +23,7 @@ def notebook():
 
 @app.route('/streamlit')
 def streamlit():
-    st.set_page_config(page_title="My Streamlit App")
-    st.write("Hello, world!")
-    return "hello"
+    return render_template('streamlit.html', stlit="http://localhost:8501/")
 
 
 if __name__ == '__main__':
