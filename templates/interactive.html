@@ -2,12 +2,27 @@
 
 {% block main %}
     <br>
-    <form method="post" action="/interactive_check">
+
+    <h1>Interactive</h1><br>
+    <h3>On this page you can discover some statics about injured motorists at some date</h3>
+
+    <br>
+    <form method="post" action="/interactive">
         <div class="mb-3">
             <label for="date_field" class="form-label">Date to show stats:</label>
-            <input name="date" type="text" class="form-control" id="date_field" placeholder="2023/09/01">
+            <input name="date" type="date" class="form-control" style="max-width: 350px" id="date_field" placeholder="2021/07/20">
         </div>
         <br>
         <button type="submit" class="btn btn-primary">Show stats</button>
     </form>
+
+    <br><br>
+
+    {% for row in rows %}
+        {% if not row == rows[0] %}
+            <p>{{ row }}</p>
+        {% else %}
+            <p><b>{{ row }}</b></p>
+        {% endif %}
+    {% endfor %}
 {% endblock %}

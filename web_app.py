@@ -1,5 +1,5 @@
 import pandas as pd
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 
 
 def get_df():
@@ -48,32 +48,32 @@ def analytics():
     return render_template('analytics.html')
 
 
-@app.route('/interactive')
+@app.route('/interactive', methods=['GET', 'POST'])
 def interactive():
-    return render_template('interactive.html')
+    if request.method == 'POST':
+        print(request.form)
+        date = request.form['date']
+        try:
+            date = date.split('-')
 
+            if len(date[0]) != 4 or len(date[1]) != 2 or len(date[2]) != 2:
+                raise Exception
 
-@app.route('/interactive_check', methods=['POST'])
-def check():
-    date = request.form['date']
-    try:
-        date = date.split('/')
-        if len(date[0]) != 4 or len(date[1]) != 2 or len(date[2]) != 2:
-            raise Exception
+            date = '/'.join(date)
 
-        date = '/'.join(date)
+            dt = df[df["crash_date"] == date]
 
-        dt = df[df["crash_date"] == date]
+            res = [f"Number of motorist injured at {date} in {dt.shape[0]} crashes:",
+                   f"Mean: {dt['number_of_motorist_injured'].mean()}",
+                   f"Median: {(dt['number_of_motorist_injured'].max() + dt['number_of_motorist_injured'].min()) / 2}",
+                   f"Standart deviation: {dt['number_of_motorist_injured'].std()}"]
 
-        res = [f"Number of motorist injured at {date} in {dt.shape[0]} crashes:",
-               f"Mean: {dt['number_of_motorist_injured'].mean()}",
-               f"Median: {(dt['number_of_motorist_injured'].max() + dt['number_of_motorist_injured'].min()) / 2}",
-               f"Standart deviation: {dt['number_of_motorist_injured'].std()}"]
-
-        return render_template('check.html', rows=res)
-    except:
-        res = ['Date format is wrong, it should look like 2023/09/01']
-        return render_template('check.html', rows=res)
+            return render_template('interactive.html', rows=res)
+        except:
+            res = ['Date format is wrong, it should look like 2023-09-01']
+            return render_template('interactive.html', rows=res)
+    else:
+        return render_template('interactive.html')
 
 
 @app.route('/notebook')

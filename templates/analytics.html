@@ -4,15 +4,113 @@
     <br>
     <h1>Analytics Page</h1>
 
+    <br>
+    <h3>Descriptive Statistics</h3>
+        <br>
+
+        <p><b>Number of motorists injured:</b></p>
+            <p style="margin-left: 20px">Mean: 0.2352111332224736</p>
+            <p style="margin-left: 20px">Median: 21.5</p>
+            <p style="margin-left: 20px">Standart deviation: 0.6903676519073746</p>
+
+        <br>
+
+        <p><b>Number of pedestrians injured:</b></p>
+            <p style="margin-left: 20px">Mean: 0.0029668602168125106</p>
+            <p style="margin-left: 20px">Median: 7.5</p>
+            <p style="margin-left: 20px">Standart deviation: 0.06812785250106211</p>
+
+        <br>
+
+        <p><b>Number of cyclists injured:</b></p>
+            <p style="margin-left: 20px">Mean: 0.03439831347854138</p>
+            <p style="margin-left: 20px">Median: 2.0</p>
+            <p style="margin-left: 20px">Standart deviation: 0.1842028728786876</p>
+
+    <br><br>
+
+    <h3>Road accidents depending on the city district</h3>
     <img style="width: 75%" src="/static/img/nb/district.png">
+    <ul>
+        <li>Staten Island seems to be the safest borough.</li>
+    </ul>
+
+    <br>
+
+    <h3>Road accidents by time</h3>
     <img style="width: 75%" src="/static/img/nb/bytime.png">
+    <ul>
+        <li>It is noticeable that from <b>2012 to +- 2016</b> the number of DPTs remained within the range of 250 - 550 accidents per day, but a noticeable decrease was seen in <b>2016 - 2020</b>.</li>
+        <li><b>Since 2020</b>, the number of accidents has decreased again, and rarely exceeds 100 accidents.</li>
+    </ul>
+
+    <br>
+
+    <h3>Road accidents by time</h3>
     <img style="width: 75%" src="/static/img/nb/byhour.png">
+    <ul>
+        <li><b>Peak Accident Hours:</b> The hours with the highest number of car accidents are 15:00 and 16:00, with 66,399 and 63,878 accidents, respectively. These late afternoon hours appear to be the most accident-prone times of the day.</li>
+    </ul>
+
+    <br>
+
+    <h3>Road accidents by month</h3>
     <img style="width: 75%" src="/static/img/nb/bymonth.png">
+    <ul>
+        <li><b>The winter months</b>, like December, January, and February, see fewer accidents. Harsh weather, including snow and ice, can make driving riskier and lead to a reduction in accidents during these months.</li>
+    </ul>
+
+    <br>
+
+    <h3>Distribution of consequences in accidents</h3>
     <img style="width: 75%" src="/static/img/nb/consequences.png">
+    <ul>
+        <li>The total number of people injured in road accidents is <b>242.833</b>, which indicates a significant impact on public health and safety.</li>
+        <li>Road accidents killed <b>690</b> people, which emphasizes the measures need to be taken to reduce the number of fatalities and improve road safety.</li>
+    </ul>
+
+    <br>
+
+    <h3>Collisions During Different Seasons</h3>
     <img style="width: 75%" src="/static/img/nb/byyearseason.png">
+    <ul>
+        <li>In almost all years, the number of road collisions are usually lower in Winter. This is due to reduced vehicles on the road because of the unfavourable weather conditions.</li>
+    </ul>
+
+    <br>
+
+    <h3>Collison Contributing Factors</h3>
     <img style="width: 75%" src="/static/img/nb/byfactor.png">
+    <ul>
+        <li>Driver Innatention stands out the most as it is way higher compared to the other factors.</li>
+    </ul>
+
+    <br><br>
+
+    <h3>Looking for correlations</h3>
     <img style="width: 75%" src="/static/img/nb/corr.png">
+    <ul>
+        <li>The correlation matrix provides valuable insights into the relationship between different crash factors.</li>
+        <li>Geographical attributes such as BOROUGH, WIDTH, and LENGTH are weakly correlated with other variables, indicating that specific locations may not have a strong influence on crash characteristics.</li>
+    </ul>
 
-    <h3>Hypothesis</h3>
+    <br><br>
 
+    <h1>Hypothesis</h1>
+    <br>
+    <h5><b>Is it true, that there is a day, when it is safer to drive a car?</b></h5>
+    <br>
+
+    <p>Let's look through the data...</p>
+    <img style="width: 75%" src="/static/img/nb/byday.png">
+    <br>
+    <ul>
+        <li><b>Weekday Escalation:</b> Accidents increased steadily from Monday to Thursday. As the workweek progresses, factors like rush hour traffic and stress may contribute to more accidents.</li>
+        <li><b>Weekend Respite:</b> Weekends (Saturday and Sunday) had lower accident rates compared to weekdays. Reduced work-related commutes and relaxed driving behavior likely play a role.</li>
+        <li><b>Weekend Safety:</b> Fridays saw the most accidents <b>(141,426)</b>, while Sundays had the fewest <b>(103,729)</b>. This suggests that people tend to be more cautious on weekends, leading to fewer accidents on Saturdays and Sundays.</li>
+    </ul>
+
+    <br>
+
+    <h5><b>Answer:</b> Yes, it is definitely much safer to drive a car at weekend, especially on Sunday.</h5><br>
 {% endblock %}
