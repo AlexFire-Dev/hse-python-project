@@ -83,7 +83,7 @@ def notebook():
 
 @app.route('/streamlit')
 def streamlit():
-    return render_template('streamlit.html', stlit="http://localhost:8501/")
+    return render_template('streamlit.html', stlit="https://streamlit.alexfire.shvarev.com/")
 
 
 if __name__ == '__main__':
