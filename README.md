@@ -10,3 +10,5 @@ static_folder = /static/
 
 
 By Shvarev Alexey 232-2
+
+PS. website version of dataset was cut due to memory limit error

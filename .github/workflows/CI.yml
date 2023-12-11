@@ -22,12 +22,8 @@ jobs:
           script: |
             cd hse-python-project
             git pull
-            docker tag hse-python-project-streamlit:latest hse-python-project-streamlit:old
-            docker tag hse-python-project-web:latest hse-python-project-web:old
-            docker build -t hse-python-project-streamlit:latest .
-            docker build -t hse-python-project-web:latest .
+            docker compose down -v
+            docker image rm hse-python-project-streamlit
+            docker image rm hse-python-project-web
             docker compose pull --quiet
-            docker compose down
             docker compose up --detach
-            docker image rm hse-python-project-streamlit:old
-            docker image rm hse-python-project-web:old
