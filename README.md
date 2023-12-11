@@ -1,14 +1,14 @@
 **HSE Python Project**
 
-Dataset: https://www.kaggle.com/datasets/ishmaelkiptoo/motor-vehicle-collisions
+`Dataset can be found on:` https://www.kaggle.com/datasets/ishmaelkiptoo/motor-vehicle-collisions
 
-static_folder = /static/
+`static_folder:` /static/
 
-`Web version: https://hse.alexfire.shvarev.com/`
+`Web version:` https://hse.alexfire.shvarev.com/
 
-`Streamlit: https://streamlit.alexfire.shvarev.com/`
+`Streamlit:` https://streamlit.alexfire.shvarev.com/
 
 
-By Shvarev Alexey 232-2
+<b>By Shvarev Alexey 232-2</b>
 
-PS. website version of dataset was cut due to memory limit error
+<sub><sup>P.S. website version of dataset was cut due to memory limit error, rows of dataframe were cut randomly</sup></sub>
